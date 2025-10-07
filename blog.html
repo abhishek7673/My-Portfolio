@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Blog | Abhishek Kumar</title>
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #f9f9f9;
+        color: #333;
+      }
+      header {
+        text-align: center;
+        padding: 2rem 1rem;
+        background: #004aad;
+        color: #fff;
+      }
+      header h1 {
+        margin: 0;
+        font-size: 2.2rem;
+      }
+
+      .search-bar {
+        text-align: center;
+        margin: 1rem 0;
+      }
+      .search-bar input {
+        width: 80%;
+        max-width: 400px;
+        padding: 10px 15px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 1rem;
+      }
+
+      /* ---------- Blog List ---------- */
+      .blog-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 1.5rem;
+        padding: 1.5rem;
+      }
+      .blog-card {
+        background: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+      }
+      .blog-card:hover {
+        transform: translateY(-5px);
+      }
+      .blog-image {
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+      }
+      .blog-category {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        background: #004aad;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 6px;
+        font-size: 0.8rem;
+      }
+      .blog-content {
+        padding: 1rem;
+      }
+      .blog-meta {
+        font-size: 0.9rem;
+        color: #666;
+        display: flex;
+        justify-content: space-between;
+      }
+      .blog-title {
+        font-size: 1.2rem;
+        margin: 0.6rem 0;
+        color: #222;
+      }
+      .blog-excerpt {
+        font-size: 0.95rem;
+        color: #555;
+      }
+      .blog-tags {
+        margin-top: 0.5rem;
+      }
+      .tag {
+        background: #e3e6ff;
+        color: #333;
+        padding: 4px 8px;
+        border-radius: 12px;
+        font-size: 0.8rem;
+        margin-right: 5px;
+      }
+      .read-more-btn {
+        background: #004aad;
+        color: #fff;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+      .read-more-btn:hover {
+        background: #00398a;
+      }
+
+      /* ---------- Article View ---------- */
+      .article-view {
+        display: none;
+        width: 100%;
+        min-height: 100vh;
+        background: #fff;
+        color: #222;
+        padding: 3rem 8%;
+        box-sizing: border-box;
+        animation: fadeIn 0.4s ease;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .article-view h1 {
+        margin-top: 0;
+        font-size: 2rem;
+        color: #004aad;
+      }
+      .article-meta {
+        font-size: 0.95rem;
+        color: #777;
+        margin-bottom: 1.5rem;
+      }
+      .article-view pre {
+        background: #f4f4f4;
+        padding: 1rem;
+        border-radius: 6px;
+        overflow-x: auto;
+      }
+      .back-btn {
+        background: #6c757d;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-bottom: 20px;
+      }
+      .back-btn:hover {
+        background: #5a6268;
+      }
+      #articleTags {
+        margin-top: 1.5rem;
+      }
+      #articleTags .tag {
+        background: #e9ecef;
+        color: #333;
+        padding: 6px 10px;
+        border-radius: 12px;
+        margin-right: 8px;
+        font-size: 0.85rem;
+      }
+
+      /* ---------- Footer ---------- */
+      footer {
+        text-align: center;
+        padding: 1rem;
+        color: #777;
+        background: #f0f0f0;
+        margin-top: 2rem;
+      }
+
+      @media (max-width: 768px) {
+        .article-view {
+          padding: 2rem 1.5rem;
+        }
+        .article-view h1 {
+          font-size: 1.6rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Abhishek will be updating this page soon.</h1>
+      <p>Insights on Web Development, AI & Technology</p>
+    </header>
+
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="🔍 Search articles..." />
+    </div>
+
+    <section class="blog-grid" id="blogList"></section>
+
+    <section class="article-view" id="articleView">
+      <button class="back-btn" onclick="showBlogList()">← Back to Blogs</button>
+      <h1 id="articleTitle"></h1>
+      <div class="article-meta" id="articleMeta"></div>
+      <div id="articleContent"></div>
+      <div id="articleTags"></div>
+    </section>
+
+    <footer>© 2025 Abhishek Kumar | All Rights Reserved</footer>
+
+    <script>
+      const blogs = [
+        {
+          id: 'react18',
+          title: 'Building Modern Web Applications with React 18',
+          date: '2024-12-15',
+          readTime: '8 min read',
+          category: 'JavaScript',
+          image:
+            'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1000&q=80',
+          excerpt:
+            'Explore React 18’s latest features like concurrent rendering and automatic batching.',
+          tags: ['React', 'JavaScript', 'Frontend'],
+          content: `
+          <p>React 18 introduces several groundbreaking features that make building web apps more efficient.</p>
+          <h3>What's New?</h3>
+          <ul>
+            <li>Concurrent Rendering</li>
+            <li>Automatic Batching</li>
+            <li>Suspense Improvements</li>
+            <li>New Hooks: useId, useTransition, useDeferredValue</li>
+          </ul>
+          <pre><code>import { createRoot } from 'react-dom/client';
+const root = createRoot(document.getElementById('root'));
+root.render(<App />);</code></pre>
+        `,
+        },
+        {
+          id: 'nodejs-api',
+          title: 'Building RESTful APIs with Express.js and MongoDB',
+          date: '2024-12-10',
+          readTime: '6 min read',
+          category: 'Node.js',
+          image:
+            'https://images.unsplash.com/photo-1627398242454-45a1465c2479?auto=format&fit=crop&w=1000&q=80',
+          excerpt:
+            'A step-by-step guide to building scalable REST APIs using Express.js and MongoDB.',
+          tags: ['Node.js', 'Express', 'MongoDB', 'API'],
+          content: `
+          <p>Building RESTful APIs is essential for backend developers. Let’s create one using Express.js.</p>
+          <pre><code>npm install express mongoose cors dotenv</code></pre>
+          <p>Connect MongoDB:</p>
+          <pre><code>mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log('Connected'))
+  .catch(err => console.log(err));</code></pre>
+        `,
+        },
+        {
+          id: 'css-grid',
+          title: 'Mastering CSS Grid: Complete Layout Guide',
+          date: '2024-12-05',
+          readTime: '4 min read',
+          category: 'CSS',
+          image:
+            'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1000&q=80',
+          excerpt:
+            'Learn CSS Grid layout system to design flexible, modern, and responsive web pages.',
+          tags: ['CSS', 'Grid', 'Responsive'],
+          content: `
+          <p>CSS Grid is a two-dimensional layout system that simplifies creating responsive designs.</p>
+          <h3>Example:</h3>
+          <pre><code>.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}</code></pre>
+        `,
+        },
+      ];
+
+      const blogList = document.getElementById('blogList');
+      const articleView = document.getElementById('articleView');
+      const searchInput = document.getElementById('searchInput');
+
+      function renderBlogs(data) {
+        const sorted = data.sort((a, b) => new Date(b.date) - new Date(a.date));
+        blogList.innerHTML = sorted
+          .map(
+            (blog) => `
+        <div class="blog-card">
+          <div class="blog-image" style="background-image:url('${blog.image}')">
+            <div class="blog-category">${blog.category}</div>
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta">
+              <div>📅 ${new Date(blog.date).toDateString()}</div>
+              <div>⏱️ ${blog.readTime}</div>
+            </div>
+            <h3 class="blog-title">${blog.title}</h3>
+            <p class="blog-excerpt">${blog.excerpt}</p>
+            <div class="blog-tags">
+              ${blog.tags
+                .map((tag) => `<span class="tag">${tag}</span>`)
+                .join('')}
+            </div>
+            <button class="read-more-btn" onclick="openBlog('${
+              blog.id
+            }')">Read More</button>
+          </div>
+        </div>
+      `
+          )
+          .join('');
+      }
+
+      function openBlog(id) {
+        const blog = blogs.find((b) => b.id === id);
+        if (blog) {
+          blogList.style.display = 'none';
+          searchInput.style.display = 'none';
+          articleView.style.display = 'block';
+          document.getElementById('articleTitle').innerHTML = blog.title;
+          document.getElementById('articleMeta').innerHTML = `${new Date(
+            blog.date
+          ).toDateString()} • ${blog.readTime} • ${blog.category}`;
+          document.getElementById('articleContent').innerHTML = blog.content;
+          document.getElementById('articleTags').innerHTML = blog.tags
+            .map((tag) => `<span class="tag">${tag}</span>`)
+            .join('');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }
+
+      function showBlogList() {
+        articleView.style.display = 'none';
+        blogList.style.display = 'grid';
+        searchInput.style.display = 'inline-block';
+      }
+
+      searchInput.addEventListener('input', () => {
+        const query = searchInput.value.toLowerCase();
+        const filtered = blogs.filter(
+          (b) =>
+            b.title.toLowerCase().includes(query) ||
+            b.category.toLowerCase().includes(query) ||
+            b.tags.some((tag) => tag.toLowerCase().includes(query))
+        );
+        renderBlogs(filtered);
+      });
+
+      renderBlogs(blogs);
+    </script>
+  </body>
+</html>
