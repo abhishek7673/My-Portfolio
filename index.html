@@ -35,7 +35,17 @@
         </button>
       </div>
     </nav>
+	<!-- Background Music -->
+	<audio id="bgMusic" loop>
+  		<source src="D:\PORTFOLIO1\Cornfield Chase.mp3" type="audio/mpeg">
+  		Your browser does not support the audio element.
+	</audio>
+	  <!-- Music Control Button -->
+	<button id="musicBtn" class="music-btn">🎵</button>
 
+
+<!-- Music Control Button -->
+<button id="musicBtn" class="music-btn">🎵</button>
     <!-- Hero Section -->
     <section id="home" class="hero">
       <div class="container">
@@ -867,6 +877,20 @@
           }, index * 200);
         });
       });
+
+		//music
+ 	const music = document.getElementById("bgMusic");
+  	const btn = document.getElementById("musicBtn");
+
+  	btn.addEventListener("click", () => {
+    if (music.paused) {
+      music.play();
+      btn.textContent = "⏸️";
+    } else {
+      music.pause();
+      btn.textContent = "🎵";
+    }
+  });
     </script>
   </body>
 </html>
