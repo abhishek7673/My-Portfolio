@@ -38,6 +38,34 @@ body::before {
   }
 }
 
+/* Highlighted “abhishek_7673” word */
+.highlight {
+  color: #ffcc00; /* bright gold color for visibility */
+  font-weight: 700;
+}
+/*music*/
+.music-btn {
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  background: #ffcc00;
+  color: #0a0a0a;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 2000;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.music-btn:hover {
+  background-color: #ffd633;
+  transform: scale(1.1);
+}
+
 /* Floating particles */
 .particles {
   position: fixed;
