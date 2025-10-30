@@ -44,6 +44,31 @@ body::before {
   font-weight: 700;
 }
 /*music*/
+/*
+.music-btn {
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  background: #ffcc00;
+  color: #0a0a0a;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 2000;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.music-btn:hover {
+  background-color: #ffd633;
+  transform: scale(1.1);
+} */
+
+/*music updated */
+
 .music-btn {
   position: fixed;
   top: 15px;
@@ -65,6 +90,13 @@ body::before {
   background-color: #ffd633;
   transform: scale(1.1);
 }
+@media (max-width: 768px) {
+  .music-btn {
+    top: 70px;   /* push it below the navbar or menu button */
+    right: 15px; /* keep it aligned right */
+    z-index: 100; /* make sure it stays clickable but under navbar if needed */
+  }
+} 
 
 /* Floating particles */
 .particles {
