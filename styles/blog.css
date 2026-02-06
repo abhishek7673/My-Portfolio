@@ -1,0 +1,198 @@
+      body {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #f9f9f9;
+        color: #333;
+      }
+      header {
+        text-align: center;
+        padding: 2rem 1rem;
+        background: #004aad;
+        color: #fff;
+      }
+      header h1 {
+        margin: 0;
+        font-size: 2.2rem;
+      }
+
+      .search-bar {
+        text-align: center;
+        margin: 1rem 0;
+      }
+      .search-bar input {
+        width: 80%;
+        max-width: 400px;
+        padding: 10px 15px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 1rem;
+      }
+
+      /* ---------- Blog List ---------- */
+      .blog-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 1.5rem;
+        padding: 1.5rem;
+      }
+      .blog-card {
+        background: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+      }
+      .blog-card:hover {
+        transform: translateY(-5px);
+      }
+      .blog-image {
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+      }
+      .blog-category {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        background: #004aad;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 6px;
+        font-size: 0.8rem;
+      }
+      .blog-content {
+        padding: 1rem;
+      }
+      .blog-meta {
+        font-size: 0.9rem;
+        color: #666;
+        display: flex;
+        justify-content: space-between;
+      }
+      .blog-title {
+        font-size: 1.2rem;
+        margin: 0.6rem 0;
+        color: #222;
+      }
+      .blog-excerpt {
+        font-size: 0.95rem;
+        color: #555;
+      }
+      .blog-tags {
+        margin-top: 0.5rem;
+      }
+      .tag {
+        background: #e3e6ff;
+        color: #333;
+        padding: 4px 8px;
+        border-radius: 12px;
+        font-size: 0.8rem;
+        margin-right: 5px;
+      }
+      .read-more-btn {
+        background: #004aad;
+        color: #fff;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+      .read-more-btn:hover {
+        background: #00398a;
+      }
+
+      /* ---------- Article View ---------- */
+      .article-view {
+        display: none;
+        width: 100%;
+        min-height: 100vh;
+        background: #fff;
+        color: #222;
+        padding: 3rem 8%;
+        box-sizing: border-box;
+        animation: fadeIn 0.4s ease;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .article-view h1 {
+        margin-top: 0;
+        font-size: 2rem;
+        color: #004aad;
+      }
+      .article-meta {
+        font-size: 0.95rem;
+        color: #777;
+        margin-bottom: 1.5rem;
+      }
+      .article-view pre {
+        background: #f4f4f4;
+        padding: 1rem;
+        border-radius: 6px;
+        overflow-x: auto;
+      }
+      .back-btn {
+        background: #6c757d;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-bottom: 20px;
+      }
+      .back-btn:hover {
+        background: #5a6268;
+      }
+      #articleTags {
+        margin-top: 1.5rem;
+      }
+      #articleTags .tag {
+        background: #e9ecef;
+        color: #333;
+        padding: 6px 10px;
+        border-radius: 12px;
+        margin-right: 8px;
+        font-size: 0.85rem;
+      }
+
+      .divider {
+            margin: 30px 0;
+            border-top: 1px solid #ddd;
+        }
+        .note {
+            font-style: italic;
+            color: #555;
+        }
+      .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #ffffff;
+        }
+      /* ---------- Footer ---------- */
+      footer {
+        text-align: center;
+        padding: 1rem;
+        color: #777;
+        background: #f0f0f0;
+        margin-top: 2rem;
+      }
+
+      @media (max-width: 768px) {
+        .article-view {
+          padding: 2rem 1.5rem;
+        }
+        .article-view h1 {
+          font-size: 1.6rem;
+        }
+      }
