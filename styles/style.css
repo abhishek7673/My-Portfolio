@@ -12,6 +12,12 @@ body {
   overflow-x: hidden;
 }
 
+.logo img {
+    height: 50px;   /* adjust size as needed */
+    width: auto;
+    display: block;
+}
+
 /* Animated Background */
 body::before {
   content: '';
