@@ -196,3 +196,41 @@
           font-size: 1.6rem;
         }
       }
+
+      .ending-line {
+    font-size: 42px;
+    text-align: center;
+    margin: 60px 0;
+    font-family: 'Georgia', serif;
+    letter-spacing: 2px;
+    color: #2c3e50;
+    opacity: 0;
+    animation: fadeIn 2s ease forwards;
+}
+
+.ending-line span {
+    font-style: italic;
+    font-weight: 500;
+    color: #000;
+}
+
+.ending-line::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 2px;
+    background: #2c3e50;
+    margin: 12px auto 0;
+    opacity: 0.6;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
