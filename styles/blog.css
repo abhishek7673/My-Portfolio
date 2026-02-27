@@ -224,6 +224,25 @@
     opacity: 0.6;
 }
 
+.not-okay {
+    position: relative;
+    color: #C2185B;        /* dark pink */
+    margin-left: 8px;
+    font-style: italic;
+    font-size: 14px;      /* smaller size */
+    opacity: 0.8;         /* slightly subtle */
+}
+
+.not-okay::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 55%;
+    width: 60%;           /* half strike */
+    height: 1.5px;
+    background: #C2185B;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
