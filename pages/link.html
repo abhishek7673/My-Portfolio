@@ -1,16 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Other Links</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Links</title>
+  <link rel="stylesheet" href="../styles/link.css">
 </head>
-<body>
+<body class="dark">
 
-    <p>Hey hey!!!</p>
-    <p>If you are reading this page. Please comment about what you think of this portfolio!</p>
+  <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
 
-    <p>Updating this page soon.</p>
+  <div class="page-container">
+
+    <!-- MAIN LINKS SECTION -->
+    <main class="main-content">
+      <h1 class="page-title">Important Links<span>.</span></h1>
+
+      <div class="link-card">
+        <a href="https://www.instagram.com/abhishek_7673/" target="_blank">Instagram</a>
+      </div>
+
+      <div class="link-card">
+        <a href="https://www.linkedin.com/in/abhishek7673/" target="_blank">LinkedIn</a>
+      </div>
+
+      <div class="link-card">
+        <a href="https://x.com/abhishek7673" target="_blank">Twitter</a>
+      </div>
+
+      <div class="link-card">
+        <a href="https://www.youtube.com/@AbhishekKumar-geu" target="_blank">YouTube</a>
+      </div>
+
+      <div class="link-card">
+        <a href="../assets/Abhishek_Kumar_Resume.pdf" target="_blank">My Resume</a>
+      </div>
+
+      <div class="link-card">
+        <a href="https://sites.google.com/view/abhishek7673/home" target="_blank">Old Site</a>
+      </div>
+
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="song-card">
+        <div class="song-header">
+          <h3>Song of the Day</h3>
+        </div>
+
+        <div class="song-info">
+          <span class="song-name">Deewana Deewana</span>
+          <span class="song-date">27 Feb 2026</span>
+        </div>
+
+        <a href="https://youtu.be/IGti1RTS1wc?si=uYSZQmTcWTVZRoZw" class="song-button" target="_blank">Listen Now 🎧</a>
+
+        <div class="youtube-player">
+<iframe data-testid="embed-iframe" 
+style="border-radius:12px" 
+src="https://open.spotify.com/embed/track/47RTQoh3pzjhWLUMllNRRJ?utm_source=generator" 
+width="100%" height="352" 
+frameBorder="0" 
+allowfullscreen="" 
+allow="autoplay; 
+clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+loading="lazy"></iframe>
+        </div>
+      </div>
+    </aside>
     
+
+  </div>
+
+  <script>
+    function toggleTheme() {
+  const body = document.body;
+
+  if (body.classList.contains("dark")) {
+    body.classList.remove("dark");
+    document.documentElement.style.setProperty("--bg", "#f4f4f4");
+    document.documentElement.style.setProperty("--card", "#ffffff");
+    document.documentElement.style.setProperty("--text", "#111111");
+  } else {
+    body.classList.add("dark");
+    document.documentElement.style.setProperty("--bg", "#121212");
+    document.documentElement.style.setProperty("--card", "#1e1e1e");
+    document.documentElement.style.setProperty("--text", "#ffffff");
+  }
+}
+  </script>
 </body>
 </html>
