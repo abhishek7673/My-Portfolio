@@ -17,12 +17,24 @@ body {
   display: flex;
   gap: 40px;
   padding: 50px;
+  height: 100vh;            /* fill viewport so children can scroll */
+  box-sizing: border-box;
+  overflow: hidden;         /* prevent whole page scroll */
 }
 
 /* MAIN SECTION */
 .main-content {
   flex: 3;
+  display: flex;
+  flex-direction: column;
 }
+
+.links-wrapper {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
 
 .main-content h1 {
   margin-bottom: 30px;
@@ -47,17 +59,43 @@ body {
   background: var(--accent);
 }
 
-/* SIDEBAR */
-.sidebar {
+/* SONG UPDATES COLUMN */
+.song-section {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.songs-wrapper {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 10px;
 }
 
 .song-card {
   background: var(--card);
   padding: 20px;
   border-radius: 15px;
-  position: sticky;
-  top: 100px;
+  margin-bottom: 20px;
+}
+
+.song-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.button-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.embed-player iframe {
+  width: 100%;
+  height: 200px;
+  border: none;
+  border-radius: 12px;
 }
 
 .song-info {
