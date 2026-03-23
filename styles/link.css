@@ -24,7 +24,7 @@ body {
 
 /* MAIN SECTION */
 .main-content {
-  flex: 3;
+  flex: 1;
   display: flex;
   flex-direction: column;
 }
@@ -119,7 +119,7 @@ body {
 }
 
 .page-title {
-  font-size: 48px;
+  font-size: 32px;
   font-weight: 600;
   letter-spacing: 2px;
   position: relative;

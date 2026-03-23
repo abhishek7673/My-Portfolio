@@ -49,6 +49,32 @@ body::before {
   color: #ffcc00; /* bright gold color for visibility */
   font-weight: 700;
 }
+
+/* Scrolling announcement (CSS marquee replacement) */
+.scroll-wrap {
+  width: 100%;
+  overflow: hidden;
+  padding: 0.4rem 0;
+  margin-bottom: 1.5rem;
+}
+
+.scroll-text {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scrollText 14s linear infinite;
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+@keyframes scrollText {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
 /*music*/
 /*
 .music-btn {
